@@ -1,12 +1,15 @@
 <template>
-  <div>222</div>
+  <div>
+    123213
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType } from "vue"
 export default defineComponent({
-  name: "Home",
-  components: {
+  name: "Header",
+  props: {
+
   }
 });
 </script>
