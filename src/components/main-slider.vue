@@ -16,7 +16,7 @@ import { defineComponent } from "vue"
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.scss';
 export default defineComponent({
-    name: 'Swiper',
+    name: 'SwiperQW',
     components: {
       Swiper,
       SwiperSlide,
