@@ -14,7 +14,6 @@
           <p class="firstTextSlide" :key="item.infoText">{{item.infoText}}</p>
           <p class="secondTextSlide" :key="item.InfoTextSecond">{{item.InfoTextSecond}}</p>
         </div>
-        <div class="prt__button"><a href="#">Обсудить ваш проект</a></div>
         <navigation/>
       </div>
       <div class="imageSlide">
@@ -23,7 +22,7 @@
     </swiper-slide>
 
     <pagination/>
-
+    <div class="prt__button"><a href="#">Обсудить ваш проект</a></div>
   </swiper>
 </template>
 
