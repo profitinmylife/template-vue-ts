@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import './../assets/css/style.scss'
 export default defineComponent({
   name: "Header",
   props: {
@@ -22,16 +23,19 @@ export default defineComponent({
 $background: #ffff;
 
 .header{
-  width: 100vw;
-  height: 10vh;
+  width: 100%;
+  height: 80px;
   padding: 0;
-  background-color: $background;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 10;
 }
 .h-container{
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 .h-logo{
   width: 90px;
