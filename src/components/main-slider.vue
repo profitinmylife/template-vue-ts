@@ -28,11 +28,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import SwiperCore, {Navigation, Pagination} from 'swiper';
+import SwiperCore, {Navigation, Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
 
 SwiperCore.use([Navigation, Pagination]);
 
