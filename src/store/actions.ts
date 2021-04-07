@@ -12,14 +12,14 @@ type AugmentedActionContext = {
 } & Omit<ActionContext<State, State>, 'commit'>
 
 export interface Actions {
-  [ActionTypes.GET_COUTNER](
+  [ActionTypes.GET_COUNTER](
     { commit }: AugmentedActionContext,
     payload: number
   ): Promise<number>
 }
 
 export const actions: ActionTree<State, State> & Actions = {
-  [ActionTypes.GET_COUTNER]({ commit }) {
+  [ActionTypes.GET_COUNTER]({ commit }) {
     return new Promise((resolve) => {
       setTimeout(() => {
         const data = 256

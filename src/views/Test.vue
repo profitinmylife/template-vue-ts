@@ -54,7 +54,7 @@ export default defineComponent ({
       this.$store.commit(MutationTypes.RESET_COUNTER, 0)
     },
     async getCounter() {
-      const result = await this.$store.dispatch(ActionTypes.GET_COUTNER, 256)
+      const result = await this.$store.dispatch(ActionTypes.GET_COUNTER, 256)
     },
     saveCounter() {
       this.$store.commit(MutationTypes.SAVE_COUNTER, this.counter)

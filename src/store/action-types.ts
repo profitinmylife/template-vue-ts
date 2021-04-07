@@ -1,3 +1,3 @@
 export enum ActionTypes {
-  GET_COUTNER = 'GET_COUTNER',
+  GET_COUNTER = 'GET_COUNTER',
 }
