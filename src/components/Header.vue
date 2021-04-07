@@ -2,7 +2,7 @@
   <div class="header">
     <div class="h-container">
       <div class="h-logo">
-        <img src="./../assets/img/logo.svg" alt="Логотип">
+        <img :src="require(`./../assets/img/logo.svg`)" alt="Логотип">
       </div>
     </div>
   </div>

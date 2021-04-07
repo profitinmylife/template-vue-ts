@@ -1,24 +1,42 @@
-import { InjectionKey } from "vue";
-import { createStore, useStore as baseUseStore, Store } from "vuex";
+import {
+  createStore,
+  Store as VuexStore,
+  CommitOptions,
+  DispatchOptions,
+} from 'vuex'
+import { State, state } from './state'
+import { Getters, getters } from './getters'
+import { Mutations, mutations } from './mutations'
+import { Actions, actions } from './actions'
 
-export interface State {
-  count: number;
-  active: boolean;
-}
-
-export const key: InjectionKey<Store<State>> = Symbol()
-
-export const store = createStore<State>({
-  state: {
-    count: 0,
-    active: true
-  },
-  mutations: {
-
-  },
+export const store = createStore({
+  state,
+  getters,
+  mutations,
+  actions,
 })
 
-// define your own `useStore` composition function
-export function useStore () {
-  return baseUseStore(key)
+export type Store = Omit<
+  VuexStore<State>,
+  'getters' | 'commit' | 'dispatch'
+> & {
+  commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
+    key: K,
+    payload: P,
+    options?: CommitOptions
+  ): ReturnType<Mutations[K]>
+} & {
+  dispatch<K extends keyof Actions>(
+    key: K,
+    payload: Parameters<Actions[K]>[1],
+    options?: DispatchOptions
+  ): ReturnType<Actions[K]>
+} & {
+  getters: {
+    [K in keyof Getters]: ReturnType<Getters[K]>
+  }
+}
+
+export function useStore() {
+  return store as Store
 }

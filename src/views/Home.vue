@@ -1,6 +1,7 @@
 <template>
   <SwiperQW :items="items"/>
   <router-link to="/services">Services</router-link>
+  <router-link to="/test">Test</router-link>
 </template>
 
 <script lang="ts">
