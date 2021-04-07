@@ -7,6 +7,9 @@
     <p>Saved counter: {{ savedCounter }}</p>
     <button type="button" @click="addInArray">Add Arr</button>
     <p>Array : {{ addedItem }}</p>
+    <div class="axios">
+      {{info}}
+    </div>
   </section>
 </template>
 
@@ -15,9 +18,15 @@
 import { defineComponent } from "vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { ActionTypes } from "@/store/action-types";
+import axios from "axios";
 
 export default defineComponent ({
   name: "Test",
+  data() {
+    return {
+      info: null
+    }
+  },
   computed: {
     counter: {
       get() {
@@ -42,7 +51,7 @@ export default defineComponent ({
   },
   methods: {
     resetCounter() {
-      this.$store.commit(MutationTypes.SET_COUNTER, 0)
+      this.$store.commit(MutationTypes.RESET_COUNTER, 0)
     },
     async getCounter() {
       const result = await this.$store.dispatch(ActionTypes.GET_COUTNER, 256)
@@ -55,6 +64,11 @@ export default defineComponent ({
       console.log(this.$store.state.arr);
     }
   },
+  mounted() {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then(response => (this.info = response.data.time.updateduk));
+  }
 });
 </script>
 

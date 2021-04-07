@@ -6,6 +6,7 @@ export type Mutations<S = State> = {
   [MutationTypes.SET_COUNTER](state: S, payload: number): void
   [MutationTypes.SAVE_COUNTER](state: S, payload: number): void
   [MutationTypes.ADD_ARR](state: S, payload: number): void
+  [MutationTypes.RESET_COUNTER](state: S, payload: number): void
 }
 
 export const mutations: MutationTree<State> & Mutations = {
@@ -18,4 +19,7 @@ export const mutations: MutationTree<State> & Mutations = {
   [MutationTypes.ADD_ARR](state, payload: number){
     state.arr.push(payload)
   },
+  [MutationTypes.RESET_COUNTER](state, payload: number){
+    state.counter = payload
+  }
 }
