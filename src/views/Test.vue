@@ -8,66 +8,69 @@
     <button type="button" @click="addInArray">Add Arr</button>
     <p>Array : {{ addedItem }}</p>
     <div class="axios">
-      {{info}}
+      <div class="">{{ id }}</div>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-
 import { defineComponent } from "vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { ActionTypes } from "@/store/action-types";
-import axios from "axios";
 
 export default defineComponent ({
   name: "Test",
   data() {
     return {
-      info: null
+      userId: 123,
+      id: 10,
+      title: "123123123"
     }
   },
   computed: {
     counter: {
       get() {
-        return this.$store.state.counter
+        return this.$store.state.counter;
       },
       set(value: number) {
-        this.$store.commit(MutationTypes.SET_COUNTER, value)
+        this.$store.commit(MutationTypes.SET_COUNTER, value);
       }
     },
     doubledCounter() {
-      return this.$store.getters.doubledCounter
+      return this.$store.getters.doubledCounter;
     },
     savedCounter() {
-      return this.$store.getters.savedCounter
+      return this.$store.getters.savedCounter;
     },
-    // addedItem() {
-    //   return this.$store.getters.addedArray
-    // }
     addedItem() {
-      return this.$store.state.arr.length
+      return this.$store.state.arr.length;
     }
   },
   methods: {
     resetCounter() {
-      this.$store.commit(MutationTypes.RESET_COUNTER, 0)
+      this.$store.dispatch(ActionTypes.RESET_COUNTER, 0);
     },
     async getCounter() {
-      const result = await this.$store.dispatch(ActionTypes.GET_COUNTER, 256)
+      const result = await this.$store.dispatch(ActionTypes.GET_COUNTER, 256);
     },
     saveCounter() {
-      this.$store.commit(MutationTypes.SAVE_COUNTER, this.counter)
+      this.$store.dispatch(ActionTypes.SAVE_COUNTER, this.counter);
     },
     addInArray() {
-      this.$store.commit(MutationTypes.ADD_ARR, this.counter)
+      this.$store.dispatch(ActionTypes.ADD_ARR_COUNTER, this.counter);
       console.log(this.$store.state.arr);
+      console.log(this.$store.state.testApi);
     }
   },
   mounted() {
-    axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        .then(response => (this.info = response.data.time.updateduk));
+    let post = {
+      id: 1,
+      email: '12312312',
+      first_name: '12312312',
+      last_name: '12312312'
+    }
+    this.$store.dispatch(ActionTypes.POSTED_API, post)
+    this.$store.dispatch(ActionTypes.GETING_API, 0);
   }
 });
 </script>

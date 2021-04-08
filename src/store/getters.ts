@@ -5,6 +5,7 @@ export type Getters = {
   doubledCounter(state: State): number
   savedCounter(state: State): number
   addedArray(state: State): any
+  getApi(state: State): any
 }
 
 export const getters: GetterTree<State, State> & Getters = {
@@ -16,5 +17,8 @@ export const getters: GetterTree<State, State> & Getters = {
   },
   addedArray: (state) => {
     return state.arr.push(state.counter)
+  },
+  getApi: (state) => {
+    return state.testApi
   }
 }

@@ -7,6 +7,8 @@ export type Mutations<S = State> = {
   [MutationTypes.SAVE_COUNTER](state: S, payload: number): void
   [MutationTypes.ADD_ARR](state: S, payload: number): void
   [MutationTypes.RESET_COUNTER](state: S, payload: number): void
+  [MutationTypes.GET_API](state: S, testApi: object ): void
+  [MutationTypes.POST_API](state: S, postApi: object ): void
 }
 
 export const mutations: MutationTree<State> & Mutations = {
@@ -21,5 +23,11 @@ export const mutations: MutationTree<State> & Mutations = {
   },
   [MutationTypes.RESET_COUNTER](state, payload: number){
     state.counter = payload
+  },
+  [MutationTypes.GET_API](state, testApi: object){
+    state.testApi.push(testApi)
+  },
+  [MutationTypes.POST_API](state, postApi: object){
+    state.postApi = postApi
   }
 }
